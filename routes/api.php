@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\EcomAdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,11 @@ Route::middleware('auth.user')->get('/secure-data', function (Request $request) 
         'status' => true,
         'status_code' => 'EC_1111',
         'message' => 'Access granted',
-        'user_id' => $request->header('user_id'),
+        'user_id' => $request->header(key: 'user_id'),
     ]);
+
+    Route::middleware(['check_role:1'])->group(function () {
+        Route::post('/admin/add-staff', [EcomAdminController::class, 'store']); // API to add users
+        // Route::get('/admin/roles', [UserController::class, 'getRoles']); // Get list of roles
+    });
 });
