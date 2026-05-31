@@ -94,7 +94,8 @@ class AuthController extends Controller
             ], 400);
         }
 
-        $user = User::where('user_name', $request->user_name)
+        $user = User::with('role')
+                    ->where('user_name', $request->user_name)
                     ->where('is_active', 1)
                     ->first();
 
@@ -127,6 +128,7 @@ class AuthController extends Controller
         $data = [
             'user_id'    => $user->id,
             'role_id'    => $user->role_id,
+            'role_name'  => $user->role->role_name,
             'auth_token' => $user->auth_token,
             'name'       => $user->name,
             'email'      => $user->email,
