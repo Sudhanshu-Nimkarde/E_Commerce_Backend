@@ -4,6 +4,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\EcomAdminController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,12 @@ Route::post('/register-user', [AuthController::class, 'storeUser']);
 Route::post('/login-user', [AuthController::class, 'loginUser']);
 
 Route::get('/get-genders', [AuthController::class, 'getGenders']);
+
+Route::prefix('home')->group(function () {
+
+    Route::get('/getAllCategories', [CategoryController::class, 'getAllCategories']);
+
+});
 
 
 /*
