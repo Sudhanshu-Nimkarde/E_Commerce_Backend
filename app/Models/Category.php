@@ -10,6 +10,7 @@ class Category extends Model
 
     protected $fillable = [
         'category_name',
+        'image_path',
         'created_by',
         'is_active'
     ];
