@@ -38,6 +38,8 @@ Route::prefix('home')->group(function () {
 
     Route::get('/getAllCategories', [CategoryController::class, 'getAllCategories']);
 
+    Route::get('/getFirstTenCategories', [CategoryController::class, 'getFirstTenCategories']);
+
 });
 
 

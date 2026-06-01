@@ -30,5 +30,17 @@ class CategoryController extends Controller
             'data' => $categories
         ]);
     }
+
+    public function getFirstTenCategories()
+    {
+        $categories = $this->categoryService
+            ->getTenCategories();
+
+        return response()->json([
+            'status_code' => 'EC_0005',
+            'message' => 'Top categories fetched successfully',
+            'data' => $categories
+        ]);
+    }
     
 }
