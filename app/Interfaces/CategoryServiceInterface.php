@@ -7,4 +7,6 @@ interface CategoryServiceInterface
     public function getCategories();
 
     public function getTenCategories();
+
+    public function getCategoryWiseSubCategoriesList($categoryId);
 }
