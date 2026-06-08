@@ -42,5 +42,21 @@ class CategoryController extends Controller
             'data' => $categories
         ]);
     }
-    
+
+    public function getCategoryWiseSubCategories(Request $request)
+    {
+        $categoryId = $request->input('category_id');
+
+        $subCategories = $this->categoryService
+            ->getCategoryWiseSubCategoriesList($categoryId);
+
+        $httpCode = $subCategories['http_code'] ?? 200;
+
+        unset($subCategories['http_code']);
+
+        return response()->json(
+            $subCategories,
+            $httpCode
+        );
+    }   
 }

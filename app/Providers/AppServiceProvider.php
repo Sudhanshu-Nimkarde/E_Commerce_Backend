@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Interfaces\CategoryServiceInterface;
 use App\Services\CategoryService;
+use App\Interfaces\CustomerServiceInterface;
+use App\Services\CustomerService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             CategoryServiceInterface::class,
             CategoryService::class
+        );
+
+        $this->app->bind(
+            CustomerServiceInterface::class,
+            CustomerService::class
         );
     }
 }

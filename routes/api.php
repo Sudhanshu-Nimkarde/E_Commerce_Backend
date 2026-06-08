@@ -5,6 +5,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\EcomAdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,7 @@ Route::prefix('home')->group(function () {
 
     Route::get('/getFirstTenCategories', [CategoryController::class, 'getFirstTenCategories']);
 
+    Route::post('/getCategoryWiseSubCategories', [CategoryController::class, 'getCategoryWiseSubCategories']);
 });
 
 
@@ -118,6 +120,11 @@ Route::middleware('auth.user')->group(function () {
                 'message' => 'Customer Dashboard'
             ]);
         });
+
+
+        Route::get('/getCurrentCustomerDetails', [CustomerController::class, 'getCurrentCustomerDetails']);
+        Route::post('/edit-profile', [CustomerController::class, 'editProfile']);
+
     });
 
 
